@@ -2,11 +2,12 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 const hbs = require("hbs");
+const port = process.env.PORT || 8100;
 app.set("view engine", "hbs");
 
 //---------------- [ ========> middleware <======== ] ---------------\\
 
-// middleware function
+//========> middleware function
 app.use((req, res, next) => {
   var now = new Date();
   var log = `${new Date()} : ${req.method} ${req.url}`;
@@ -19,10 +20,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// this function whene the site in maintenace
-app.use((req, res, next) => {
-  res.render("maintenance.hbs");
-});
+//========> this function whene the site in maintenace
+// app.use((req, res, next) => {
+//   res.render("maintenance.hbs");
+// });
 
 //---------------- use all url after middleware ----------------\\
 
@@ -58,6 +59,6 @@ app.get("/name", (req, res) => {
   res.send("<h1>abdellah Bouskine</h1>");
 });
 
-app.listen(8100, () => {
+app.listen(port, () => {
   console.log("you are connecte in server (port:8100)");
 });
