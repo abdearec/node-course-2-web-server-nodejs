@@ -54,6 +54,14 @@ app.get("/about", (req, res) => {
     // date: new Date()
   });
 });
+app.get("/test_page", (req, res) => {
+  //res.send("<h1>Abdellah Bouskine</h1>");
+  res.render("test_page.hbs", {
+    title: "Test Page",
+    name: "Test"
+    // date: new Date()
+  });
+});
 
 app.get("/name", (req, res) => {
   res.send("<h1>abdellah Bouskine</h1>");
